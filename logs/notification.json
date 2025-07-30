@@ -1,0 +1,16 @@
+[
+  {
+    "session_id": "b4200fe6-192c-4f90-add3-74bd08e1f18c",
+    "transcript_path": "/home/ben/.claude/projects/-home-ben-projects-master--claude/b4200fe6-192c-4f90-add3-74bd08e1f18c.jsonl",
+    "cwd": "/home/ben/projects/master-.claude",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "i want to setup this project to connect to git@github.com:ban5104/.claude.git"
+  },
+  {
+    "session_id": "b4200fe6-192c-4f90-add3-74bd08e1f18c",
+    "transcript_path": "/home/ben/.claude/projects/-home-ben-projects-master--claude/b4200fe6-192c-4f90-add3-74bd08e1f18c.jsonl",
+    "cwd": "/home/ben/projects/master-.claude",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "can you add all of the contents from here and foce push it, "
+  }
+]
