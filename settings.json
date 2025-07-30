@@ -1,14 +1,1 @@
-{
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/home/ben/.claude/hooks/notification.py --notify"
-          }
-        ]
-      }
-    ]
-  }
-}
+{}
