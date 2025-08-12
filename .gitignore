@@ -1,0 +1,20 @@
+# Ignore everything by default
+*
+
+# But include these specific files and directories
+!CLAUDE.md
+!settings.json
+!agents/
+!agents/**
+!commands/
+!commands/**
+!statusline-command.sh
+
+# Always include .gitignore itself
+!.gitignore
+
+# Explicitly ignore some common files even if they match above patterns
+.DS_Store
+*.log
+*.tmp
+settings.local.json
