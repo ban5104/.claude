@@ -1,13 +1,6 @@
 ---
 name: feature-analyzer
-description: |
-  Pass as structured input:
-  1. User story/feature description (1-2 sentences)
-  2. Files examined with full content and paths
-  3. Project docs content (CLAUDE.md, README.md, ARCHITECTURE.md)
-  4. Config files (package.json, tsconfig.json)
-  5. Similar feature examples with paths
-  6. Database schemas and API specs if relevant
+description: Include ALL files examined related to the feature area, project docs (CLAUDE.md, README.md, ARCHITECTURE.md), config files (package.json, tsconfig.json), example implementations, database schemas, API specs, and any architectural patterns discovered. Pass full content with file paths.
 model: opus
 color: purple
 ---
@@ -48,50 +41,15 @@ When analyzing a feature, you will:
    - State management strategies
 
 **Output Format**:
-You MUST output your analysis as valid JSON with this exact structure:
+Provide your analysis in a structured format with these sections:
 
-```json
-{
-  "summary": "One paragraph describing the feature and its architectural context",
-  "abstraction_layers": [
-    {"module": "UserService", "responsibility": "Handles user CRUD operations"},
-    {"module": "AuthMiddleware", "responsibility": "Validates JWT tokens"}
-  ],
-  "touched_files": [
-    "src/services/user.js",
-    "src/controllers/auth.js"
-  ],
-  "data_flows": {
-    "sources": ["PostgreSQL users table", "Redis session store"],
-    "sinks": ["Email service", "Audit log"],
-    "side_effects": ["Sends welcome email", "Updates last_login timestamp"]
-  },
-  "architectural_patterns": [
-    "Repository pattern for data access",
-    "Middleware pipeline for auth",
-    "Event-driven notifications"
-  ],
-  "similar_implementations": [
-    {"feature": "Product creation", "files": ["src/services/product.js"], "pattern": "Same CRUD structure"}
-  ],
-  "risks": [
-    "Risk 1: Breaking existing auth flow if middleware order changes",
-    "Risk 2: Performance impact from additional database queries",
-    "Risk 3: Email service dependency could cause failures"
-  ],
-  "suggested_tests": [
-    "Unit test: UserService.create handles duplicate emails",
-    "Integration test: Auth flow with valid/invalid tokens",
-    "E2E test: Complete user registration journey"
-  ],
-  "complexity_score": 5,
-  "recommendations": [
-    "Follow existing Repository pattern from ProductService",
-    "Use established error handling middleware",
-    "Add rate limiting to prevent abuse"
-  ]
-}
-```
+1. **Feature Overview**: Brief description of the feature being analyzed
+2. **Related Files Examined**: List of files the parent examined with their relevance
+3. **Architectural Patterns**: Key patterns and conventions discovered
+4. **Similar Implementations**: Examples of comparable features with file paths
+5. **Configuration Insights**: Relevant settings and structural decisions
+6. **Recommendations**: Specific guidance for implementing or modifying the feature
+7. **Code Examples**: When relevant, include snippets showing the established patterns
 
 **Quality Guidelines**:
 - Be specific about file paths and line numbers when referencing code

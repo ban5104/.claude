@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "name": "example-post-api",
+  "description": "POST /api/posts should create a post and return id and createdAt",
+  "generated_by": "spec-generator-example",
+  "generated_at": "2025-08-12T20:30:00Z",
+  "acceptance": [
+    {
+      "id": "unit-tests",
+      "type": "unit",
+      "description": "Run unit tests for posts functionality",
+      "command": "pnpm test -- --testPathPattern=posts",
+      "expect": {"exitCode": 0}
+    },
+    {
+      "id": "happy-post-http",
+      "type": "http",
+      "description": "Test POST /api/posts endpoint with valid input",
+      "command": "node ./scripts/test-harness.js --method POST --path /api/posts --body '{\"title\":\"Hello\",\"body\":\"x\"}'",
+      "expect": {"status": 201, "bodyContains": ["id", "title", "createdAt"]}
+    },
+    {
+      "id": "secrets-check",
+      "type": "static",
+      "description": "Scan for hardcoded secrets and credentials",
+      "command": "node ./scripts/check-secrets.js",
+      "expect": {"exitCode": 0},
+      "critical": true
+    }
+  ],
+  "policy": {
+    "risk_level": "low",
+    "auto_merge_if_low_risk": false,
+    "migration_requires_manual_approval": true
+  }
+}

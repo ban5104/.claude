@@ -8,6 +8,8 @@
 !agents/**
 !commands/
 !commands/**
+!workflows/
+!workflows/**
 !statusline-command.sh
 
 # Always include .gitignore itself
