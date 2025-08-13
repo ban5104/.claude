@@ -15,8 +15,11 @@ The process is:
 # 1. Ask the spec-generator agent in Claude Code:
 "Create a spec for user login endpoint that accepts email/password and returns JWT"
 
-# 2. Run your tests:
-./test-unit.sh
+# 2. Run your tests using the slash command:
+/test-spec user-login-endpoint
+
+# Or run manually:
+bash scripts/test-unit.sh
 node scripts/spec-check.js specs/user-login-endpoint.json
 
 # 3. Create PR when tests pass
@@ -25,13 +28,14 @@ node scripts/spec-check.js specs/user-login-endpoint.json
 ## Directory Structure
 
 ```
-workflows/pre-pr/
+your-project/
 ├── specs/                    # Acceptance spec JSON files
 │   └── example-post-api.json # Example spec file
 ├── scripts/
+│   ├── test-unit.sh         # Unit test runner
 │   ├── spec-check.js        # Spec runner and validator
 │   └── test-harness.js      # HTTP testing utility
-└── PRE-PR-PROCESS.md        # This documentation
+└── ... your project files
 ```
 
 **Agent location:** `/Users/ben/.claude/agents/spec-generator.md`
@@ -49,10 +53,11 @@ Ask the spec-generator agent to create your spec:
 ### 2. Run Tests
 
 ```bash
-# Run unit tests
-./test-unit.sh
+# Using the slash command (recommended):
+/test-spec user-login-endpoint
 
-# Run spec validation  
+# Or manually:
+bash scripts/test-unit.sh
 node scripts/spec-check.js specs/user-login-endpoint.json
 ```
 
@@ -225,11 +230,24 @@ Example: {"email":"user@test.com","password":"secret123","name":"John"}
 Expected: 201 JSON with {id, email, createdAt}
 ```
 
+## Slash Command
+
+A `/test-spec` command is available in Claude Code:
+
+```bash
+# Run both test-unit.sh and spec-check.js with one command:
+/test-spec your-spec-name
+```
+
+This runs:
+1. `bash scripts/test-unit.sh` - Unit tests for your project
+2. `node scripts/spec-check.js specs/your-spec-name.json` - Spec validation
+
 ## That's It!
 
 The workflow is intentionally simple:
 
 1. **Ask spec-generator agent** to create your spec
-2. **Run your tests**: `./test-unit.sh` + `node scripts/spec-check.js specs/your-spec.json`
+2. **Run tests**: `/test-spec your-spec-name`
 3. **Create PR** when tests pass
 
