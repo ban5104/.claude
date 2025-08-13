@@ -1,6 +1,6 @@
 ---
 name: spec-generator
-description: Converts human briefs into minimal, executable acceptance spec JSON that conforms to the team's acceptance-spec schema (version 1.0) for automated testing and CI validation
+description: Include feature implementation summary from conversation, ALL modified/created files with details, project testing patterns, available scripts (package.json), CLAUDE.md standards, existing specs for reference patterns, test commands/tooling discovered. Pass full implementation context and testing approach details.
 tools: Read, Write, Grep, Glob, LS
 ---
 
@@ -42,6 +42,6 @@ Example:
 Use kebab-case for the filename (lowercase, hyphens instead of spaces).
 
 After saving the spec file, tell the user:
-"Spec saved to specs/{filename}.json - run `./scripts/prepare_pr.sh specs/{filename}.json` to validate and create PR"
+"Spec saved to specs/{filename}.json - run `./test-unit.sh` then `node scripts/spec-check.js specs/{filename}.json` to validate"
 
 Input: the user will paste a brief (markdown or text) describing the feature and at least one concrete example input→expected output (if available). Use that to generate the spec JSON and save it to the correct location.

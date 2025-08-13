@@ -230,7 +230,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "sonnet",
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "/Users/ben/.claude/statusline-command.sh"
